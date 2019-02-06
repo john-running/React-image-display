@@ -8,19 +8,19 @@ const ImageList = ({ images, term }) => {
   let responseHeaderMessage = null
 
   if (images.length > 0) {
-    responseHeaderMessage = `Results for "${term}"`
+    responseHeaderMessage = <div>Results for <strong>"{term}"</strong></div>
     theimages = images.map(image => {
       return (
         <ImageCard key={image.id} image={image}/>
       )
     });
   } else if (term) {
-    responseHeaderMessage = `Sorry no results for "${term}"`
+    responseHeaderMessage = <div>Sorry no results for <strong>"{term}"</strong></div>
   }
 
   return (
     <div>
-    <h2>{responseHeaderMessage}</h2>
+    {responseHeaderMessage}
     <br />
     <div className="image-list">{theimages}</div>
     </div>
