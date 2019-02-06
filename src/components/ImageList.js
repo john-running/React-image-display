@@ -15,7 +15,7 @@ const ImageList = ({ images, term, dogeImages }) => {
       )
     });
   } else if (term) {
-    responseHeaderMessage = <div>Sorry no results for <strong>"{term}"</strong> here are some dogs instead:</div>
+    responseHeaderMessage = <div>Sorry no results for <strong>"{term}"</strong>. Here are some dogs instead:</div>
     theimages = dogeImages.map(image => {
       return (
         <ImageCard key={dogeImages.id} image={image}/>
