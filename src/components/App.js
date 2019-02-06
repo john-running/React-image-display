@@ -9,18 +9,24 @@ state = {images: [], term: ''};
   onSearchSubmit = async term => {
     const response = await unsplash.get('search/photos', {
       params: { query: term,
-                per_page: 100
+                per_page: 20
       },
     });
-    //console.log(response.data.results)
-    this.setState({ images: response.data.results, term: term })
+
+    const dogeResponse = await unsplash.get('search/photos', {
+      params: { query: "dog",
+                per_page: 20
+      },
+    });
+
+    this.setState({ images: response.data.results, term: term, dogeImages: dogeResponse.data.results})
   }
 
   render(){
     return (
       <div className="ui container" style={{marginTop: '10px'}}>
         <SearchBar onSubmit={this.onSearchSubmit}/>
-        <ImageList images = {this.state.images} term = {this.state.term}/>
+        <ImageList images = {this.state.images} term = {this.state.term} dogeImages = {this.state.dogeImages}/>
       </div>
     );
   }

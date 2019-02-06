@@ -3,7 +3,7 @@ import React from 'react';
 import ImageCard from './ImageCard';
 
 
-const ImageList = ({ images, term }) => {
+const ImageList = ({ images, term, dogeImages }) => {
   let theimages = null
   let responseHeaderMessage = null
 
@@ -15,7 +15,12 @@ const ImageList = ({ images, term }) => {
       )
     });
   } else if (term) {
-    responseHeaderMessage = <div>Sorry no results for <strong>"{term}"</strong></div>
+    responseHeaderMessage = <div>Sorry no results for <strong>"{term}"</strong> here are some dogs instead:</div>
+    theimages = dogeImages.map(image => {
+      return (
+        <ImageCard key={dogeImages.id} image={image}/>
+      )
+    });
   }
 
   return (
