@@ -2,7 +2,7 @@
   "name": "pics",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://john-running.github.io/React-pic-display",
+  "homepage": "https://john-running.github.io/React-image-display",
   "dependencies": {
     "axios": "^0.18.0",
     "gh-pages": "^2.0.1",
