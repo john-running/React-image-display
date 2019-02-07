@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
             onChange={e => this.setState({ term: e.target.value})}
           />
         </div>
-        <button class="ui button" tabindex="0">Submit</button>
+        <button className="ui button" tabIndex="0">Submit</button>
       </form>
       </div>
     );

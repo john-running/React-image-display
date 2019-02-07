@@ -7,26 +7,29 @@ class App extends React.Component {
 state = {images: [], term: ''};
 
   onSearchSubmit = async term => {
-    const response = await unsplash.get('search/photos', {
+    let response = await unsplash.get('search/photos', {
       params: { query: term,
                 per_page: 20
       },
     });
+    const termCount = response.data.results.length;
 
-    const dogeResponse = await unsplash.get('search/photos', {
-      params: { query: "dog",
-                per_page: 20
-      },
-    });
+    if (termCount < 20 ) {
+      response = await unsplash.get('search/photos', {
+        params: { query: 'dog',
+                  per_page: 20
+        },
+      });
+    }
 
-    this.setState({ images: response.data.results, term: term, dogeImages: dogeResponse.data.results})
+    this.setState({ images: response.data.results, term: term, termCount: termCount})
   }
 
   render(){
     return (
       <div className="ui container" style={{marginTop: '10px'}}>
         <SearchBar onSubmit={this.onSearchSubmit}/>
-        <ImageList images = {this.state.images} term = {this.state.term} dogeImages = {this.state.dogeImages}/>
+        <ImageList images = {this.state.images} term = {this.state.term} termCount = {this.state.termCount}/>
       </div>
     );
   }
